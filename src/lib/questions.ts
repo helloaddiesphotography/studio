@@ -1,3 +1,4 @@
+
 import type { Question } from './types';
 
 export const ALL_QUESTIONS: Question[] = [
@@ -118,7 +119,7 @@ export const ALL_QUESTIONS: Question[] = [
   {
     id: 20,
     question: "Who is one of your state’s U.S. Senators now?",
-    answer: "Answers will vary. [District of Columbia residents and residents of U.S. territories should answer that D.C. (or the territory where the applicant lives) has no U.S. Senators.]",
+    answer: "Alex Padilla",
     topic: "System of Government",
   },
   {
@@ -136,7 +137,7 @@ export const ALL_QUESTIONS: Question[] = [
   {
     id: 23,
     question: "Name your U.S. Representative.",
-    answer: "Answers will vary. [Residents of territories with nonvoting Delegates or Resident Commissioners may provide the name of that Delegate or Commissioner. Also, some residents of commonwealths without a nonvoting Delegate or Resident Commissioner should provide that information.]",
+    answer: "Sam Liccardo",
     topic: "System of Government",
   },
   {
@@ -166,13 +167,13 @@ export const ALL_QUESTIONS: Question[] = [
   {
     id: 28,
     question: "What is the name of the President of the United States now?",
-    answer: "Visit uscis.gov/citizenship/testupdates for the name of the President of the United States.",
+    answer: "Donald Trump",
     topic: "Integrated Civics",
   },
   {
     id: 29,
     question: "What is the name of the Vice President of the United States now?",
-    answer: "Visit uscis.gov/citizenship/testupdates for the name of the Vice President of the United States.",
+    answer: "JD Vance",
     topic: "System of Government",
   },
   {
@@ -232,13 +233,13 @@ export const ALL_QUESTIONS: Question[] = [
   {
     id: 39,
     question: "How many justices are on the Supreme Court?",
-    answer: "9",
+    answer: "9 justices",
     topic: "System of Government",
   },
   {
     id: 40,
     question: "Who is the Chief Justice of the United States now?",
-    answer: "Visit uscis.gov/citizenship/testupdates for the name of the Chief Justice of the United States.",
+    answer: "John Roberts",
     topic: "System of Government",
   },
   {
@@ -256,13 +257,13 @@ export const ALL_QUESTIONS: Question[] = [
   {
     id: 43,
     question: "Who is the Governor of your state now?",
-    answer: "Answers will vary. [District of Columbia residents should answer that D.C. does not have a Governor.]",
+    answer: "Gavin Newsom",
     topic: "Integrated Civics",
   },
   {
     id: 44,
     question: "What is the capital of your state?",
-    answer: "Answers will vary. [District of Columbia residents should answer that D.C. is not a state and does not have a capital. Residents of U.S. territories should name the capital of the territory.]",
+    answer: "Sacramento",
     topic: "System of Government",
   },
   {
@@ -274,13 +275,13 @@ export const ALL_QUESTIONS: Question[] = [
   {
     id: 46,
     question: "What is the political party of the President now?",
-    answer: "Visit uscis.gov/citizenship/testupdates for the political party of the President.",
+    answer: "Republican",
     topic: "Integrated Civics",
   },
   {
     id: 47,
     question: "What is the name of the Speaker of the House of Representatives now?",
-    answer: "Visit uscis.gov/citizenship/testupdates for the name of the Speaker of the House of Representatives.",
+    answer: "Mike Johnson",
     topic: "System of Government",
   },
   {
@@ -292,13 +293,13 @@ export const ALL_QUESTIONS: Question[] = [
   {
     id: 49,
     question: "What is one responsibility that is only for United States citizens?",
-    answer: "vote in a federal election",
+    answer: "to vote in a federal election",
     topic: "Rights and Responsibilities",
   },
   {
     id: 50,
     question: "Name one right only for United States citizens.",
-    answer: "vote in a federal election",
+    answer: "to vote in a federal election",
     topic: "Rights and Responsibilities",
   },
   {
@@ -310,7 +311,7 @@ export const ALL_QUESTIONS: Question[] = [
   {
     id: 52,
     question: "What do we show loyalty to when we say the Pledge of Allegiance?",
-    answer: "the United States, the flag",
+    answer: "to the United States and the flag",
     topic: "Integrated Civics",
   },
   {
@@ -328,7 +329,7 @@ export const ALL_QUESTIONS: Question[] = [
   {
     id: 55,
     question: "What are two ways that Americans can participate in their democracy?",
-    answer: "vote, run for office",
+    answer: "to vote and run for office",
     topic: "Rights and Responsibilities",
   },
   {
@@ -520,7 +521,7 @@ export const ALL_QUESTIONS: Question[] = [
   {
     id: 87,
     question: "Name one American Indian tribe in the United States.",
-    answer: "Navajo",
+    answer: "the Navajo tribe",
     topic: "American History: Colonial and Independence",
   },
   {
@@ -568,7 +569,7 @@ export const ALL_QUESTIONS: Question[] = [
   {
     id: 95,
     question: "Where is the Statue of Liberty?",
-    answer: "New York",
+    answer: "In New York",
     topic: "Integrated Civics",
   },
   {
