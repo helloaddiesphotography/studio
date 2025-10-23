@@ -30,6 +30,16 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  devIndicators: {
+    buildActivity: false,
+  },
+  // In a future version of Next.js, the dev server will require this to be configured.
+  // We are allowing all origins here to simplify the developer experience,
+  // as the origin can be different depending on the developer's local setup.
+  // For more details, see https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+  experimental: {
+    allowedDevOrigins: ['**'],
+  },
 };
 
 export default nextConfig;
