@@ -5,7 +5,7 @@ import { ALL_QUESTIONS } from '@/lib/questions';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight, RotateCw } from 'lucide-react';
-import { Progress } from '../ui/progress';
+import { Slider } from '@/components/ui/slider';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
 
@@ -43,6 +43,11 @@ export default function Flashcards() {
             prevIndex === 0 ? questions.length - 1 : prevIndex - 1
         );
     }, 150);
+  };
+  
+  const handleSliderChange = (value: number[]) => {
+    setIsFlipped(false);
+    setCurrentIndex(value[0]);
   };
 
   const currentQuestion = questions[currentIndex];
@@ -89,7 +94,13 @@ export default function Flashcards() {
         </div>
         <div className="flex items-center gap-4">
             <span className="text-sm font-medium">{currentIndex + 1} / {questions.length}</span>
-            <Progress value={((currentIndex + 1) / questions.length) * 100} className="flex-1"/>
+            <Slider
+                value={[currentIndex]}
+                onValueChange={handleSliderChange}
+                max={questions.length - 1}
+                step={1}
+                className="flex-1"
+            />
         </div>
         <div className="flex justify-center items-center gap-4">
             <Button variant="outline" size="icon" onClick={handlePrev}>
