@@ -26,6 +26,7 @@ import IntelligentQuiz from './intelligent-quiz';
 import ProgressTracker from './progress-tracker';
 import StudyPlanGenerator from './study-plan-generator';
 import { Button } from '../ui/button';
+import { ThemeToggle } from './theme-toggle';
 
 type View = 'flashcards' | 'quiz' | 'progress' | 'study-plan';
 
@@ -80,6 +81,9 @@ export default function MainLayout() {
           </SidebarMenu>
         </SidebarContent>
         <SidebarFooter>
+          <div className="flex justify-center p-2 group-data-[collapsible=icon]:hidden">
+             <ThemeToggle />
+          </div>
           <div className="text-xs text-muted-foreground p-2 text-center group-data-[collapsible=icon]:hidden">
             <p>&copy; {new Date().getFullYear()} Civics Whiz</p>
           </div>

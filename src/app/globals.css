@@ -82,4 +82,11 @@
   body {
     @apply bg-background text-foreground font-body;
   }
+
+  body,
+  #__next {
+    transition:
+      background-color 0.8s ease,
+      color 0.8s ease;
+  }
 }
