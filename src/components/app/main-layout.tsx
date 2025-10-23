@@ -81,9 +81,6 @@ export default function MainLayout() {
           </SidebarMenu>
         </SidebarContent>
         <SidebarFooter>
-          <div className="flex justify-center p-2 group-data-[collapsible=icon]:hidden">
-             <ThemeToggle />
-          </div>
           <div className="text-xs text-muted-foreground p-2 text-center group-data-[collapsible=icon]:hidden">
             <p>&copy; {new Date().getFullYear()} Civics Whiz</p>
           </div>
@@ -102,6 +99,7 @@ export default function MainLayout() {
               {menuItems.find(item => item.id === activeView)?.label}
             </h2>
           </div>
+          <ThemeToggle />
         </header>
         <main className="flex-1 overflow-auto p-4 sm:p-6">
           {renderContent()}
