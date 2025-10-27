@@ -124,15 +124,42 @@
     animation: glitch-main 0.8s linear infinite;
   }
 
-  .harajuku .glitch-button {
-    position: relative;
-    text-shadow: 
-      0 0 5px hsl(var(--primary)), 
-      0 0 10px hsl(var(--primary)),
-      0 0 20px hsl(var(--accent)), 
-      0 0 30px hsl(var(--accent));
+  /* NEW: Continuous RGB Neon Glow animation */
+  @keyframes rgb-glow {
+    0% {
+      text-shadow:
+        0 0 5px hsl(0, 100%, 50%),
+        0 0 10px hsl(30, 100%, 50%),
+        0 0 20px hsl(60, 100%, 50%);
+    }
+    33% {
+      text-shadow:
+        0 0 5px hsl(120, 100%, 50%),
+        0 0 10px hsl(150, 100%, 50%),
+        0 0 20px hsl(180, 100%, 50%);
+    }
+    66% {
+      text-shadow:
+        0 0 5px hsl(240, 100%, 50%),
+        0 0 10px hsl(270, 100%, 50%),
+        0 0 20px hsl(300, 100%, 50%);
+    }
+    100% {
+      text-shadow:
+        0 0 5px hsl(0, 100%, 50%),
+        0 0 10px hsl(30, 100%, 50%),
+        0 0 20px hsl(60, 100%, 50%);
+    }
   }
-  
+
+  /* Apply the new animation to the glitch button and text */
+  .harajuku .glitch-button,
+  .harajuku .glitch-text {
+    animation: glitch-main 0.8s linear infinite, rgb-glow 3s linear infinite;
+    will-change: filter, transform;
+    filter: saturate(1.5);
+  }
+
   .harajuku .pulsate {
     animation: pulsate-strong 1.5s ease-in-out infinite;
   }
