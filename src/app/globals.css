@@ -108,24 +108,47 @@
     --chart-3: 270 90% 65%;
     --chart-4: 50 100% 60%;
     --chart-5: 140 80% 60%;
+    
+    background: linear-gradient(-45deg, hsl(330, 100%, 98%), hsl(330, 90%, 92%), hsl(190, 100%, 95%), hsl(270, 90%, 95%));
+    background-size: 400% 400%;
+    animation: gradient-bg 15s ease infinite;
+  }
+  
+  @keyframes gradient-bg {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
 
+
   .harajuku .glitch-button, .harajuku .glitch-text {
-    animation: glitch-main 1s linear infinite;
+    animation: glitch-main 0.8s linear infinite;
   }
 
   .harajuku .glitch-button {
     position: relative;
+    text-shadow: 
+      0 0 5px hsl(var(--primary)), 
+      0 0 10px hsl(var(--primary)),
+      0 0 20px hsl(var(--accent)), 
+      0 0 30px hsl(var(--accent));
   }
   
   .harajuku .pulsate {
-    animation: pulsate 2s ease-in-out infinite;
+    animation: pulsate 1.5s ease-in-out infinite;
   }
 
   @keyframes glitch-main {
-    2%,64%{ transform: translate(2px,0) skew(0deg); }
-    4%,60%{ transform: translate(-2px,0) skew(0deg); }
-    62%{ transform: translate(0,0) skew(5deg); }
+    0%, 100% { transform: translate(0, 0) skew(0deg); }
+    10% { transform: translate(-3px, 2px) skew(-2deg); }
+    20% { transform: translate(3px, -2px) skew(2deg); }
+    30% { transform: translate(-3px, 2px) skew(0deg); }
+    40% { transform: translate(3px, -2px) skew(5deg); }
+    50% { transform: translate(0, 0) skew(0deg); }
+    60% { transform: translate(-5px, 3px) skew(-5deg); }
+    70% { transform: translate(5px, -3px) skew(0deg); }
+    80% { transform: translate(-5px, 3px) skew(3deg); }
+    90% { transform: translate(5px, -3px) skew(-3deg); }
   }
   
   .harajuku .glitch-button:before,
@@ -143,35 +166,37 @@
   
   .harajuku .glitch-button:before {
     color: hsl(var(--accent)); /* Cyan */
-    animation: glitch-top 1s linear infinite;
-    clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
-    text-shadow: -2px -2px 0px hsl(var(--primary)), 2px 2px 0px hsl(var(--accent) / 0.8);
+    animation: glitch-top 1.2s linear infinite reverse;
+    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+    text-shadow: -3px -3px 0px hsl(var(--primary) / 0.7), 3px 3px 0px hsl(var(--accent) / 0.7);
   }
   
   @keyframes glitch-top {
-    2%,64% { transform: translate(2px,-2px); }
-    4%,60% { transform: translate(-2px,2px); }
-    62% { transform: translate(13px,-1px) skew(13deg); }
+    0%, 100% { transform: translate(0,0); }
+    20% { transform: translate(-5px, -5px); }
+    40% { transform: translate(5px, 5px); }
+    60% { transform: translate(-8px, 2px) skew(15deg); }
+    80% { transform: translate(8px, -2px) skew(-15deg); }
   }
   
   .harajuku .glitch-button:after {
     color: hsl(var(--primary)); /* Hot Pink */
-    animation: glitch-bottom 1.5s linear infinite;
-    clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
-    text-shadow: -2px -2px 0px hsl(var(--accent)), 2px 2px 0px hsl(var(--primary) / 0.8);
+    animation: glitch-bottom 1s linear infinite reverse;
+    clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+    text-shadow: -3px -3px 0px hsl(var(--accent) / 0.7), 3px 3px 0px hsl(var(--primary) / 0.7);
   }
   
   @keyframes glitch-bottom {
-    2%,64% { transform: translate(-2px,0); }
-    4%,60% { transform: translate(-2px,0); }
-    62% { transform: translate(-22px,5px) skew(21deg); }
+     0%, 100% { transform: translate(0,0); }
+    20% { transform: translate(5px, 5px); }
+    40% { transform: translate(-5px, -5px); }
+    60% { transform: translate(10px, -3px) skew(-20deg); }
+    80% { transform: translate(-10px, 3px) skew(20deg); }
   }
 
-
   @keyframes pulsate {
-    0% { box-shadow: 0 0 5px hsl(var(--primary) / 0.5), 0 0 10px hsl(var(--primary) / 0.4); }
-    50% { box-shadow: 0 0 20px hsl(var(--primary) / 0.8), 0 0 30px hsl(var(--primary) / 0.6); }
-    100% { box-shadow: 0 0 5px hsl(var(--primary) / 0.5), 0 0 10px hsl(var(--primary) / 0.4); }
+    0%, 100% { box-shadow: 0 0 10px hsl(var(--primary) / 0.6), 0 0 20px hsl(var(--accent) / 0.5); }
+    50% { box-shadow: 0 0 30px hsl(var(--primary)), 0 0 50px hsl(var(--accent)); }
   }
 }
 
@@ -190,3 +215,5 @@
       color 0.8s ease;
   }
 }
+
+    
