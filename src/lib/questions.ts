@@ -341,7 +341,7 @@ export const ALL_QUESTIONS: Question[] = [
   {
     id: 57,
     question: "When must all men register for the Selective Service?",
-    answer: "at age 18",
+    answer: "between eighteen (18) and twenty-six (26)",
     topic: "Rights and Responsibilities",
   },
   {
@@ -607,3 +607,5 @@ export const ALL_QUESTIONS: Question[] = [
 export const TOPICS = [
   ...new Set(ALL_QUESTIONS.map(q => q.topic)),
 ];
+
+    
