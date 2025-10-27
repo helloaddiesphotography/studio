@@ -32,46 +32,65 @@ import { ThemeToggle } from './theme-toggle';
 
 type View = 'flashcards' | 'quiz' | 'progress' | 'study-plan';
 
-function HarajukuToggle() {
-    const { theme, setTheme } = useTheme();
-    const [isHarajuku, setIsHarajuku] = useState(false);
-  
-    useEffect(() => {
-      // Ensure state is synced with DOM on mount
-      setIsHarajuku(document.documentElement.classList.contains('harajuku'))
-    }, [])
+function HarajukuToggle({ onToggle }: { onToggle: (isHarajuku: boolean) => void }) {
+  const { theme, setTheme } = useTheme();
+  const [isHarajuku, setIsHarajuku] = useState(false);
 
-    const toggleHarajuku = () => {
-      document.documentElement.classList.toggle('harajuku');
-      const isSet = document.documentElement.classList.contains('harajuku');
-      setIsHarajuku(isSet);
-      // If we're entering harajuku mode, force light theme as base
-      if (isSet && theme === 'dark') {
-        setTheme('light');
-      }
-    };
-  
-    return (
-      <Button 
-        variant="outline" 
-        size="icon" 
-        onClick={toggleHarajuku} 
+  useEffect(() => {
+    // Ensure state is synced with DOM on mount
+    const isSet = document.documentElement.classList.contains('harajuku');
+    setIsHarajuku(isSet);
+  }, []);
+
+  const toggleHarajuku = () => {
+    const isCurrentlyHarajuku = document.documentElement.classList.contains('harajuku');
+    
+    // Trigger parent callback
+    onToggle(!isCurrentlyHarajuku);
+
+    document.documentElement.classList.toggle('harajuku');
+    const isSet = document.documentElement.classList.contains('harajuku');
+    setIsHarajuku(isSet);
+
+    // If we're entering harajuku mode, force light theme as base
+    if (isSet && theme === 'dark') {
+      setTheme('light');
+    }
+  };
+
+  return (
+    <div className="harajuku-toggle-wrapper">
+      <Button
+        variant="outline"
+        size="icon"
+        onClick={toggleHarajuku}
         className={isHarajuku ? "harajuku" : ""}
         aria-pressed={isHarajuku}
       >
-        <div 
-          className="glitch-button" 
+        <div
+          className="glitch-button"
           data-text="✨"
         >
           <Sparkles />
         </div>
         <span className="sr-only">Toggle Harajuku Theme</span>
       </Button>
-    );
-  }
+    </div>
+  );
+}
 
 export default function MainLayout() {
   const [activeView, setActiveView] = useState<View>('flashcards');
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  const handleHarajukuToggle = (isEnabling: boolean) => {
+    if (isEnabling) {
+      setIsTransitioning(true);
+      setTimeout(() => {
+        setIsTransitioning(false);
+      }, 2500); // Duration of the animation
+    }
+  };
 
   const renderContent = () => {
     switch (activeView) {
@@ -97,6 +116,7 @@ export default function MainLayout() {
 
   return (
     <SidebarProvider>
+      <div className={`rainbow-transition-overlay ${isTransitioning ? 'active' : ''}`} />
       <Sidebar>
         <SidebarHeader>
           <div className="flex items-center gap-2">
@@ -128,19 +148,19 @@ export default function MainLayout() {
       </Sidebar>
       <SidebarInset>
         <header className="flex h-14 items-center gap-4 border-b bg-card px-4 lg:h-[60px] lg:px-6">
-           <SidebarTrigger className="md:hidden">
-                <Button variant="outline" size="icon">
-                    <Menu className="h-5 w-5" />
-                    <span className="sr-only">Toggle navigation menu</span>
-                </Button>
-            </SidebarTrigger>
+          <SidebarTrigger className="md:hidden">
+            <Button variant="outline" size="icon">
+              <Menu className="h-5 w-5" />
+              <span className="sr-only">Toggle navigation menu</span>
+            </Button>
+          </SidebarTrigger>
           <div className="flex-1">
-             <h2 className="text-xl font-bold tracking-tight">
+            <h2 className="text-xl font-bold tracking-tight">
               {menuItems.find(item => item.id === activeView)?.label}
             </h2>
           </div>
           <div className="flex items-center gap-2">
-            <HarajukuToggle />
+            <HarajukuToggle onToggle={handleHarajukuToggle} />
             <ThemeToggle />
           </div>
         </header>
