@@ -37,7 +37,8 @@ function HarajukuToggle() {
     const [isHarajuku, setIsHarajuku] = useState(false);
   
     useEffect(() => {
-        setIsHarajuku(document.documentElement.classList.contains('harajuku'))
+      // Ensure state is synced with DOM on mount
+      setIsHarajuku(document.documentElement.classList.contains('harajuku'))
     }, [])
 
     const toggleHarajuku = () => {
@@ -55,15 +56,12 @@ function HarajukuToggle() {
         variant="outline" 
         size="icon" 
         onClick={toggleHarajuku} 
-        className="relative overflow-hidden"
+        className={isHarajuku ? "harajuku" : ""}
         aria-pressed={isHarajuku}
       >
         <div 
           className="glitch-button" 
           data-text="✨"
-          style={{
-            color: isHarajuku ? 'hsl(var(--primary))' : 'inherit',
-          }}
         >
           <Sparkles />
         </div>
