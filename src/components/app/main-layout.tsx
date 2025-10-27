@@ -1,13 +1,15 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Book,
   Bot,
   BrainCircuit,
   LayoutDashboard,
   Menu,
+  Sparkles,
 } from 'lucide-react';
+import { useTheme } from 'next-themes';
 import {
   SidebarProvider,
   Sidebar,
@@ -29,6 +31,46 @@ import { Button } from '../ui/button';
 import { ThemeToggle } from './theme-toggle';
 
 type View = 'flashcards' | 'quiz' | 'progress' | 'study-plan';
+
+function HarajukuToggle() {
+    const { theme, setTheme } = useTheme();
+    const [isHarajuku, setIsHarajuku] = useState(false);
+  
+    useEffect(() => {
+        setIsHarajuku(document.documentElement.classList.contains('harajuku'))
+    }, [])
+
+    const toggleHarajuku = () => {
+      document.documentElement.classList.toggle('harajuku');
+      const isSet = document.documentElement.classList.contains('harajuku');
+      setIsHarajuku(isSet);
+      // If we're entering harajuku mode, force light theme as base
+      if (isSet && theme === 'dark') {
+        setTheme('light');
+      }
+    };
+  
+    return (
+      <Button 
+        variant="outline" 
+        size="icon" 
+        onClick={toggleHarajuku} 
+        className="relative overflow-hidden"
+        aria-pressed={isHarajuku}
+      >
+        <div 
+          className="glitch-button" 
+          data-text="✨"
+          style={{
+            color: isHarajuku ? 'hsl(var(--primary))' : 'inherit',
+          }}
+        >
+          <Sparkles />
+        </div>
+        <span className="sr-only">Toggle Harajuku Theme</span>
+      </Button>
+    );
+  }
 
 export default function MainLayout() {
   const [activeView, setActiveView] = useState<View>('flashcards');
@@ -99,7 +141,10 @@ export default function MainLayout() {
               {menuItems.find(item => item.id === activeView)?.label}
             </h2>
           </div>
-          <ThemeToggle />
+          <div className="flex items-center gap-2">
+            <HarajukuToggle />
+            <ThemeToggle />
+          </div>
         </header>
         <main className="flex-1 overflow-auto p-4 sm:p-6">
           {renderContent()}

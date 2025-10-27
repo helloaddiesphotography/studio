@@ -73,6 +73,97 @@
     --sidebar-border: 240 4% 18%;
     --sidebar-ring: 197 76% 53%;
   }
+
+  .harajuku {
+    --background: 330 100% 98%; /* Light pink background */
+    --foreground: 335 60% 30%; /* Dark pink/magenta text */
+    --card: 330 100% 96%;
+    --card-foreground: 335 60% 30%;
+    --popover: 330 100% 94%;
+    --popover-foreground: 335 60% 30%;
+    --primary: 330 89% 65%; /* Hot pink */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 330 90% 92%;
+    --secondary-foreground: 335 60% 40%;
+    --muted: 330 80% 94%;
+    --muted-foreground: 335 50% 50%;
+    --accent: 190 100% 70%; /* Cyan/aqua accent */
+    --accent-foreground: 240 6% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 330 80% 88%;
+    --input: 330 80% 88%;
+    --ring: 330 89% 55%;
+    --sidebar-background: 330 100% 96%;
+    --sidebar-foreground: 335 60% 30%;
+    --sidebar-primary: 330 89% 65%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 330 90% 88%;
+    --sidebar-accent-foreground: 330 89% 45%;
+    --sidebar-border: 330 80% 88%;
+    --sidebar-ring: 330 89% 55%;
+
+    --chart-1: 330 89% 65%;
+    --chart-2: 190 100% 70%;
+    --chart-3: 270 90% 65%;
+    --chart-4: 50 100% 60%;
+    --chart-5: 140 80% 60%;
+  }
+
+  .harajuku .glitch-button, .harajuku .glitch-text {
+    animation: glitch 1s linear infinite;
+  }
+  
+  .harajuku .pulsate {
+    animation: pulsate 2s ease-in-out infinite;
+  }
+
+  @keyframes glitch {
+    2%,64%{ transform: translate(2px,0) skew(0deg); }
+    4%,60%{ transform: translate(-2px,0) skew(0deg); }
+    62%{ transform: translate(0,0) skew(5deg); }
+  }
+
+  .glitch-button:before,
+  .glitch-button:after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+  }
+  
+  .glitch-button:before {
+    animation: glitch-top 1s linear infinite;
+    clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+  }
+  
+  @keyframes glitch-top {
+    2%,64% { transform: translate(2px,-2px); }
+    4%,60% { transform: translate(-2px,2px); }
+    62% { transform: translate(13px,-1px) skew(-13deg); }
+  }
+  
+  .glitch-button:after {
+    animation: glitch-bottom 1.5s linear infinite;
+    clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+    -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+  }
+  
+  @keyframes glitch-bottom {
+    2%,64% { transform: translate(-2px,0); }
+    4%,60% { transform: translate(-2px,0); }
+    62% { transform: translate(-22px,5px) skew(21deg); }
+  }
+
+  @keyframes pulsate {
+    0% { box-shadow: 0 0 5px hsl(var(--primary) / 0.5), 0 0 10px hsl(var(--primary) / 0.4); }
+    50% { box-shadow: 0 0 20px hsl(var(--primary) / 0.8), 0 0 30px hsl(var(--primary) / 0.6); }
+    100% { box-shadow: 0 0 5px hsl(var(--primary) / 0.5), 0 0 10px hsl(var(--primary) / 0.4); }
+  }
 }
 
 @layer base {
